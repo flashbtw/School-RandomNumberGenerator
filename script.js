@@ -17,7 +17,7 @@ function n_zz2(lowerBound, upperBound, count) {
         }
     }
 
-    sortedIntegerArray = sortIntegerArrayWithBubblesort(unsortedIntegerArray);
+    sortedIntegerArray = Bubblesort(unsortedIntegerArray);
     document.getElementById("OutputRandomNumbers").innerHTML = sortedIntegerArray.join(", ").toString();
 }
 
@@ -55,24 +55,23 @@ function isNumberUniqueInArray(integerArray, toBeCheckedNumber) {
     return numberUnique;
 }
 
-function sortIntegerArrayWithBubblesort(unsortedIntegerArray) {
+function Bubblesort(unsortedIntegerArray) {
     let i;
     let memory;
     let sorted = false;
-    let sortedIntegerArray;
+    let sortedIntegerArray = unsortedIntegerArray;
 
     while (!sorted) {
         sorted = true;
-        for (i = 0; i < unsortedIntegerArray.length; i++) {
-            if (unsortedIntegerArray[i] > unsortedIntegerArray[i + 1]) {
+        for (i = 0; i < sortedIntegerArray.length; i++) {
+            if (sortedIntegerArray[i] > sortedIntegerArray[i + 1]) {
                 sorted = false;
-                memory = unsortedIntegerArray[i];
-                unsortedIntegerArray[i] = unsortedIntegerArray[i + 1];
-                unsortedIntegerArray[i + 1] = memory;
+                memory = sortedIntegerArray[i];
+                sortedIntegerArray[i] = unsortedIntegerArray[i + 1];
+                sortedIntegerArray[i + 1] = memory;
             }
         }
     }
-    sortedIntegerArray = unsortedIntegerArray;
     return sortedIntegerArray;
 }
 
