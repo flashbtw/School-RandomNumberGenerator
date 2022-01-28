@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Ziehung der Lottozahlen</title>
+</head>
+<style>
+
+    * {
+        text-align: center;
+    }
+
+    .border.rounded {
+        border: black solid 2px;
+        border-radius: 5px;
+        min-width: 200px;
+        height: 1rem;
+        display: inline-block;
+        padding: 5px;
+    }
+
+    .padding {
+        padding: 2px;
+    }
+
+    .main {
+        position: absolute;
+        vertical-align: top;
+    }
+
+    .center {
+        text-align: center;   
+    }
+
+    .center :nth-child(1) {
+        text-align: center;
+    }
+
+
+    table {
+        border: black solid 1px;
+        border-collapse: collapse;
+        min-height: 1rem;
+    }
+
+    table tr {
+        border: black solid 1px;
+        border-collapse: collapse;
+        min-height: 1rem;
+    }
+
+    table td {
+        border: black solid 1px;
+        border-collapse: collapse;
+        min-height: 1rem;
+        padding: 6px;
+    }
+
+    output {
+        height: 1rem;
+        display: inline-block;
+    }
+
+    .border.invisible tr {
+        border: none;
+    }
+
+    .border.invisible tr:nth-child(5) td {
+        border: none;
+    }
+
+    .border.invisible tr:nth-child(6) td {
+        border: none;
+    }
+
+    .border.invisible tr:nth-child(7) td {
+        border: none;
+    }
+
+</style>
+<body>
+    <div class="input border invisible">
+        <table class="border invisible">
+            <tr class="center">
+                <td>untere Grenze</td>
+                <td>obere Grenze</td>
+                <td>Anzahl</td>
+            </tr>
+            <tr>
+                <td><input type="text" class="padding border rounded" id="lowerBound" value="1"></td>
+                <td><input type="text" class="padding border rounded" id="upperBound" value="49"></td>
+                <td><input type="text" class="padding border rounded" id="count" value="6"></td>
+            </tr>
+            <tr class="center">
+                <td></td>
+                <td>Zufallszahlen:</td>
+                <td></td>
+            </tr>
+            <tr class="center">
+                <td></td>
+                <td><output id="OutputRandomNumbers" type="text"></output></td>
+                <td></td>
+            </tr>
+            <tr class="border invisible center">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="center"><input value="Zahlen generieren" type="button" class="padding" onclick="n_zz2(lowerBound.value, upperBound.value, count.value)"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Fehler zuruecksetzen" onclick="resetErrors()"></td>
+                <td id="Error_td" style="background-color: aquamarine;"><output id="Errors" type="text"></output></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
