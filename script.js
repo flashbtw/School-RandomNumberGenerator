@@ -4,7 +4,6 @@ function n_zz2(lowerBound, upperBound, count) {
     let randomNumber;
     let i = 0;
 
-    console.log(lowerBound, upperBound, count);
     if (!inputValid(lowerBound, upperBound, count)) {
         return;
     }
