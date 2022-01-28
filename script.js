@@ -17,7 +17,7 @@ function n_zz2(lowerBound, upperBound, count) {
         }
     }
 
-    sortedIntegerArray = Bubblesort(unsortedIntegerArray);
+    sortedIntegerArray = bubblesort(unsortedIntegerArray);
     document.getElementById("OutputRandomNumbers").innerHTML = sortedIntegerArray.join(", ").toString();
 }
 
@@ -27,7 +27,7 @@ function inputValid(lowerBound, upperBound, count) {
         document.getElementById("Errors").innerHTML = "untere Grenze kann nicht groeßer als obere sein."
         return false;
     }
-    if (upperBound - lowerBound == count) {
+    if (upperBound - lowerBound + 1 < count) {
         document.getElementById("Error_td").style = "background-color: lightcoral;";
         document.getElementById("Errors").innerHTML = "kann nicht mehr einzigartige Zahlen erstellen, als es gibt"
         return false;
