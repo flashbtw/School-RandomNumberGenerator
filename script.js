@@ -55,7 +55,7 @@ function isNumberUniqueInArray(integerArray, toBeCheckedNumber) {
     return numberUnique;
 }
 
-function Bubblesort(unsortedIntegerArray) {
+function bubblesort(unsortedIntegerArray) {
     let i;
     let memory;
     let sorted = false;
