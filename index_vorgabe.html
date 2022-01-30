@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Zufallszahlen</title>
+<style type="text/css">td {align:center;}</style>
+
+
+<script language="JavaScript">
+ var zz=[];
+ // Zufallszahlen ermitteln:
+
+ function n_zz(u,o,n)
+ {
+ var glueckszahlen=[];
+ for (var i=0;i<n;i++)
+         {
+          glueckszahlen[i]=Math.floor(Math.random()*o)+u;
+         };
+ return  glueckszahlen;
+ }
+
+
+ // Ehrlichgesagt 0 Plan was das da is:
+
+ function vh(el,arr)
+ {
+ var i=0;
+ var vorhanden=false;
+ do
+   {
+   if (arr[i] === el) vorhanden=true;
+   else i=i+1;
+   }
+ while ((i<arr.length) && (vorhanden===false));
+ return vorhanden;
+ }
+
+ // Unterfunktion für onclick in HTML-Teil:
+
+ function zz_ermitteln()
+ {
+ zz = n_zz(parseInt(document.zfz.unten.value),parseInt(document.zfz.oben.value),parseInt(document.zfz.anz_zfz.value));
+ return
+ }
+
+
+
+ // Anzeige-funktion:
+
+  function zz_anzeigen()
+ {
+ var index="";
+ bubblesort(zz);
+
+ for (var i=0;i<zz.length;i++){
+        index=(i+1).toString();
+        document.getElementById("gz" + index).value = zz[i];
+ }
+ return;
+ }
+
+
+ // Check für Zahl vorhanden:
+
+ function check()
+ {
+    if (vh(parseInt(document.zfz.test.value),zz) === true) document.zfz.checkout.value="JA!"
+    else document.zfz.checkout.value="NEIN!"
+ return;
+ }
+
+
+ // Kleinste zfz ermitteln:
+
+ function min(arr)
+  {
+   var minimum=arr[0]
+   for (var i=1 ; i<arr.length ; i++)
+      {
+       if (arr[i] < minimum) minimum = arr[i];
+      }
+   return minimum;
+  }
+
+
+  //Größte zfz ermitteln:
+
+  function max(arr)
+   {
+    var maximum=arr[0]
+    for (var i=1 ; i<arr.length ; i++)
+     {
+      if (arr[i] > maximum) maximum = arr[i];
+     }
+    return maximum;
+   }
+
+
+
+ // Min/Max Anzeige:
+
+ function min_max_anzeigen()
+  {
+   document.zfz.min_anz.value=min(zz);
+   document.zfz.max_anz.value=max(zz);
+  }
+
+  function bubblesort(unsortedIntegerArray) {
+    let i;
+    let memory;
+    let sorted = false;
+    let sortedIntegerArray = unsortedIntegerArray;
+    console.log("I bims bubblesort");
+
+    while (!sorted) {
+        sorted = true;
+        for (i = 0; i < sortedIntegerArray.length; i++) {
+            if (sortedIntegerArray[i] > sortedIntegerArray[i + 1]) {
+                sorted = false;
+                memory = sortedIntegerArray[i];
+                sortedIntegerArray[i] = unsortedIntegerArray[i + 1];
+                sortedIntegerArray[i + 1] = memory;
+            }
+        }
+    }
+    console.log("i bims ende")
+    return sortedIntegerArray;
+}
+//-->
+</script>
+
+</head>
+<body>
+<h2>Zufallszahlen</h2>
+<form name="zfz">
+<p>
+Mit diesem Programm kannst du 1 bis 6 zuf&auml;llige Zahlen aus einem beliebigem Intervall nat&uuml;rlicher Zahlen erzeugen.
+</p>
+
+<table width="800px"  border="0" cellpadding="0" cellspacing="2">
+ <tr align="center">
+  <td>Anzahl Zufallszahlen:</td>
+  <td><input type="text" size="10" value="" name="anz_zfz"></input></td>
+  <td>von:</td>
+  <td><input type="text" size="10" name="unten" value=""></input></td>
+  <td>bis:</td>
+  <td><input type="text" size="10" name="oben"  value=""></input></td>
+  <td><input type="button" value="Starte Ziehung der Zufallszahlen" onclick="zz_ermitteln()"></input></td>
+ </tr>
+
+ <tr>
+  <td>Zufallszahlen:</td>
+  <td><input type="text" id="gz1" size="10" value=""></input></td>
+  <td><input type="text" id="gz2" size="10" value=""></input></td>
+  <td><input type="text" id="gz3" size="10" value=""></input></td>
+  <td><input type="text" id="gz4" size="10" value=""></input></td>
+  <td><input type="text" id="gz5" size="10" value=""></input></td>
+  <td><input type="text" id="gz6" size="10" value=""></input></td>
+ </tr>
+
+ <tr>
+  <td>Zufallszahl:</td>
+  <td><input type="text" name="test" size="10" value=""></input></td>
+  <td><input type="button" value="vorhanden?" onclick="check()"></input></td>
+  <td><output name="checkout" value=""></output></td>
+  <td colspan="4" align="right"><input type="button" value="Zufallszahlen anzeigen" onclick="zz_anzeigen()"></td>
+ </tr>
+
+ <tr>
+  <td>Minimum: </td>
+  <td><input type="text" name="min_anz" size="10"></td>
+  <td>Maximum: </td>
+  <td><input type="text" name="max_anz" size="10"></td>
+  <td colspan="4" align="right"><input type="button" value="Min/Max Ausgabe" onclick="min_max_anzeigen()"></td>
+ </tr>
+
+</table>
+</form>
+
+</body>
+</html>
